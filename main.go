@@ -4,28 +4,34 @@ import (
 	"bytes"
 	"flag"
 	"fmt"
+	"html/template"
+	"io"
+	"io/ioutil"
+	"os"
+	"runtime/pprof"
+	"strings"
+
 	chromahtml "github.com/alecthomas/chroma/formatters/html"
 	"github.com/yuin/goldmark"
 	highlighting "github.com/yuin/goldmark-highlighting"
 	"github.com/yuin/goldmark/extension"
 	"github.com/yuin/goldmark/parser"
 	"github.com/yuin/goldmark/renderer/html"
-	"html/template"
-	"io/ioutil"
-	"os"
-	"runtime/pprof"
-	"strings"
 )
 
 const defaultTitle = "untitled"
 
+var appVersion = "dev"
+
 func main() {
-	var page bool
+	var page, showVersion bool
 	var css, cpuprofile string
 	var chromaStyle string
 
 	flag.BoolVar(&page, "page", false,
 		"Generate a standalone HTML page")
+	flag.BoolVar(&showVersion, "v", false,
+		"Show app version")
 	flag.StringVar(&css, "css", "",
 		"Link to a CSS stylesheet (implies -page)")
 	flag.StringVar(&chromaStyle, "style", "monokailight",
@@ -33,17 +39,20 @@ func main() {
 	flag.StringVar(&cpuprofile, "cpuprofile", "",
 		"Write cpu profile to a file")
 	flag.Usage = func() {
-		fmt.Fprintf(os.Stderr, "Markdown Processor "+
-			"\nAvailable at http://github.com/ttys3/md2html \n\n"+
-			"Copyright © 2020 荒野無燈 <https://ttys3.net>\n"+
-			"Distributed under the Simplified BSD License\n"+
+		printVersion(os.Stderr)
+		fmt.Fprintf(os.Stderr,
 			"Usage:\n"+
-			"  %s [options] [inputfile [outputfile]]\n\n"+
-			"Options:\n",
+				"  %s [options] [inputfile [outputfile]]\n\n"+
+				"Options:\n",
 			os.Args[0])
 		flag.PrintDefaults()
 	}
 	flag.Parse()
+
+	if showVersion {
+		printVersion(os.Stdout)
+		return
+	}
 
 	// enforce implied options
 	if css != "" {
@@ -147,6 +156,13 @@ func main() {
 	if page {
 		out.WriteString(footer)
 	}
+}
+
+func printVersion(w io.Writer) {
+	fmt.Fprintf(w, "md2html %s"+
+		"\nAvailable at http://github.com/ttys3/md2html \n\n"+
+		"Copyright © 2020 荒野無燈 <https://ttys3.net>\n"+
+		"Distributed under the Simplified BSD License\n\n", appVersion)
 }
 
 // try to guess the title from the input buffer
