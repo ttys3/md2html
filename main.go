@@ -28,7 +28,7 @@ func main() {
 		"Generate a standalone HTML page")
 	flag.StringVar(&css, "css", "",
 		"Link to a CSS stylesheet (implies -page)")
-	flag.StringVar(&chromaStyle, "style", "monokai",
+	flag.StringVar(&chromaStyle, "style", "monokailight",
 		"Chroma style, see https://xyproto.github.io/splash/docs/ for full list")
 	flag.StringVar(&cpuprofile, "cpuprofile", "",
 		"Write cpu profile to a file")
