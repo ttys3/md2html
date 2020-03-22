@@ -22,10 +22,14 @@ const defaultTitle = "untitled"
 func main() {
 	var page bool
 	var css, cpuprofile string
+	var chromaStyle string
+
 	flag.BoolVar(&page, "page", false,
 		"Generate a standalone HTML page")
 	flag.StringVar(&css, "css", "",
 		"Link to a CSS stylesheet (implies -page)")
+	flag.StringVar(&chromaStyle, "style", "monokai",
+		"Chroma style, see https://xyproto.github.io/splash/docs/ for full list")
 	flag.StringVar(&cpuprofile, "cpuprofile", "",
 		"Write cpu profile to a file")
 	flag.Usage = func() {
@@ -96,7 +100,7 @@ func main() {
 		),
 		goldmark.WithExtensions(
 			highlighting.NewHighlighting(
-				highlighting.WithStyle("monokai"),
+				highlighting.WithStyle(chromaStyle),
 				highlighting.WithFormatOptions(
 					chromahtml.WithLineNumbers(false),
 					chromahtml.LineNumbersInTable(true),
