@@ -22,3 +22,5 @@ Run `md2html` to see all options.
 
 [alecthomas/chroma](https://github.com/alecthomas/chroma) library
 
+
+this project is inspired by [mdtohtml](https://github.com/gomarkdown/mdtohtml)
