@@ -149,10 +149,12 @@ func main() {
 			fmt.Fprintln(os.Stderr, "Error execute template:", err)
 		}
 	}
+	out.WriteString(`\n<article class="markdown-body entry-content" style="padding: 30px;">\n`)
 	if _, err = out.Write(output.Bytes()); err != nil {
 		fmt.Fprintln(os.Stderr, "Error writing output:", err)
 		os.Exit(-1)
 	}
+	out.WriteString(`\n</article>\n`)
 	if page {
 		out.WriteString(footer)
 	}
@@ -226,10 +228,17 @@ const header = `
 		margin: 0;
 		padding: 0;
 	}
-
+	
 	.markdown-body {
 		color: #373a3c;
+		overflow:hidden;
+		font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;
+		font-size:14px;
+		line-height:1.6;
+		word-wrap:break-word
 	}
+	
+
 	.markdown-body a {
 		color: #0275d8;
 		text-decoration: none;
@@ -239,9 +248,9 @@ const header = `
 		text-decoration: underline;
 	}
 	
-	code,pre{tab-size:4}
+	.markdown-body code, .markdown-body pre{ tab-size:4 }
 	
-	tt,code,pre{
+	.markdown-body tt, .markdown-body code, .markdown-body pre{ 
 		font-family: 'JetBrains Mono', Consolas, Menlo, 'Fira Code',
 					'Fantasque Sans Mono', 'Eco Coding', 'Envy Code R',
 					'CosmicSansNeueMono', Monaco, 'Andale Mono', 'Ubuntu Mono',
@@ -249,21 +258,13 @@ const header = `
 					monospace;
 		font-size:14px
 	}
-	pre{margin-top:0;margin-bottom:0}
+	.markdown-body pre {margin-top:0;margin-bottom:0}
 	
-	blockquote{margin:0}
+	.markdown-body blockquote {margin:0}
 	
-	table{border-collapse:collapse;border-spacing:0}
-	td,th{padding:0}
-	
-	.markdown-body{
-		overflow:hidden;
-		font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;
-		font-size:14px;
-		line-height:1.6;
-		word-wrap:break-word
-	}
-	
+	.markdown-body table {border-collapse:collapse;border-spacing:0}
+	.markdown-body td, .markdown-body th {padding:0}
+
 	.markdown-body>*:first-child{
 		margin-top:0 !important
 	}
@@ -465,8 +466,7 @@ const header = `
 	{{.Style}}
 	</head>
 	<body>
-	<article class="markdown-body entry-content" style="padding: 30px;">
 `
 const footer = `
-</article></body></html>
+</body></html>
 `
