@@ -149,7 +149,7 @@ func main() {
 			fmt.Fprintln(os.Stderr, "Error execute template:", err)
 		}
 	}
-	out.WriteString(`<article class="markdown-body entry-content" style="padding: 30px;">`)
+	out.WriteString(`<article class="markdown-body">`)
 	if _, err = out.Write(output.Bytes()); err != nil {
 		fmt.Fprintln(os.Stderr, "Error writing output:", err)
 		os.Exit(-1)
