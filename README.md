@@ -14,7 +14,51 @@ or
 
     cat inputfile | mdtohtml [options]
 
-Run `md2html` to see all options.
+Run `md2html -h` to see all options.
+
+style preview: https://xyproto.github.io/splash/docs/
+
+available styles:
+
+```
+abap
+algol
+algol_nu
+api
+arduino
+autumn
+borland
+bw
+colorful
+dracula
+emacs
+friendly
+fruity
+github
+igor
+lovelace
+manni
+monokai
+monokailight
+murphy
+native
+paraiso-dark
+paraiso-light
+pastie
+perldoc
+pygments
+rainbow_dash
+rrt
+solarized-dark
+solarized-dark256
+solarized-light
+swapoff
+tango
+trac
+vim
+vs
+xcode
+```
 
 ## thanks
 
