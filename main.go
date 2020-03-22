@@ -30,7 +30,7 @@ func main() {
 		"Write cpu profile to a file")
 	flag.Usage = func() {
 		fmt.Fprintf(os.Stderr, "Markdown Processor "+
-			"\nAvailable at http://github.com/ttys3/mdtohtml \n\n"+
+			"\nAvailable at http://github.com/ttys3/md2html \n\n"+
 			"Copyright © 2020 荒野無燈 <https://ttys3.net>\n"+
 			"Distributed under the Simplified BSD License\n"+
 			"Usage:\n"+
