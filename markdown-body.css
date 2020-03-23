@@ -21,14 +21,16 @@
 	
 	.markdown-body code, .markdown-body pre{ tab-size:4 }
 	
-	.markdown-body tt, .markdown-body code, .markdown-body pre{ 
-		font-family: 'JetBrains Mono', Consolas, Menlo, 'Fira Code',
+	.markdown-body tt, .markdown-body code, .markdown-body pre,
+	div#cgit pre, div#cgit code {
+		font-family: 'JetBrains Mono', Menlo, 'Fira Code', Consolas,
 					'Fantasque Sans Mono', 'Eco Coding', 'Envy Code R',
 					'CosmicSansNeueMono', Monaco, 'Andale Mono', 'Ubuntu Mono',
 					Courier, 'Courier New',
 					monospace;
 		font-size:14px
 	}
+
 	.markdown-body pre {margin-top:0;margin-bottom:0}
 	
 	.markdown-body blockquote {margin:0}
