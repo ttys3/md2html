@@ -25,6 +25,8 @@ var defaultStyle string
 
 const defaultTitle = "untitled"
 
+const defaultCodeStyle = "monokailight"
+
 var appVersion = "dev"
 
 func main() {
@@ -32,13 +34,13 @@ func main() {
 	var css, cpuprofile string
 	var chromaStyle string
 
-	flag.BoolVar(&page, "page", false,
+	flag.BoolVar(&page, "page", true,
 		"Generate a standalone HTML page")
 	flag.BoolVar(&showVersion, "v", false,
 		"Show app version")
 	flag.StringVar(&css, "css", "",
 		"Link to a CSS stylesheet (implies -page)")
-	flag.StringVar(&chromaStyle, "style", "monokailight",
+	flag.StringVar(&chromaStyle, "style", "",
 		"Chroma style, see https://xyproto.github.io/splash/docs/ for full list")
 	flag.StringVar(&cpuprofile, "cpuprofile", "",
 		"Write cpu profile to a file")
@@ -102,6 +104,7 @@ func main() {
 	}
 
 	// parse and render
+	inlineCodeCss := chromaStyle != ""
 	markdown := goldmark.New(
 		goldmark.WithExtensions(extension.GFM),
 		goldmark.WithParserOptions(
@@ -118,7 +121,7 @@ func main() {
 					chromahtml.WithLineNumbers(false),
 					chromahtml.LineNumbersInTable(true),
 					chromahtml.TabWidth(4),
-					chromahtml.WithClasses(page),
+					chromahtml.WithClasses(!inlineCodeCss),
 				),
 			),
 		),
