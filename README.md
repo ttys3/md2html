@@ -12,7 +12,7 @@ To run:
 
 or
 
-    cat inputfile | mdtohtml [options]
+    cat inputfile | md2html [options]
 
 Run `md2html -h` to see all options.
 
