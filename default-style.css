@@ -1,3 +1,9 @@
+/* Basic adjustments for text and link colors, etc. */
+body {
+	margin: 0;
+	padding: 0;
+}
+
 /** markdown-body css */
 
 	.markdown-body {
@@ -9,7 +15,6 @@
 		word-wrap:break-word
 	}
 	
-
 	.markdown-body a {
 		color: #0275d8;
 		text-decoration: none;
@@ -139,3 +144,100 @@
 		background-color:transparent;border:0
 	}
 	.markdown-body pre code:before,.markdown-body pre code:after,.markdown-body pre tt:before,.markdown-body pre tt:after{content:normal}
+
+	/* chroma style adjust */
+	.highlight>.chroma {
+		margin:1em 0;overflow-x:auto;position:relative;border:2px solid #ddd;line-height:1.6
+		}
+		
+		.highlight>.chroma code{padding:0;color:inherit}
+		.highlight>.chroma pre{margin:0}
+		.highlight>.chroma table{position:relative;padding:.8em 0}
+		.highlight>.chroma table::after{position:absolute;top:0;right:0;padding:0 7px;font-size:.8em;font-weight:700;color:#b1b1b1;content:'Code'}
+		.highlight>.chroma>table::after{content:attr(data-lang);text-transform:capitalize}
+		.highlight>.chroma .lnt{color:#cacaca}
+		
+		.chroma{color:#586e75;background-color:#f8f5ec}
+		.chroma .lntd{vertical-align:top;padding:0;margin:0;border:0}
+		.chroma .lntable{border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block}
+		.chroma .hl{display:block;width:100%;background-color:#ffc}
+		.chroma .lntd:first-of-type{margin-right:.4em;padding:0 .8em 0 .4em}
+		.chroma .ln{margin-right:.4em;padding:0 .4em}
+		
+		.chroma .k, 
+		.chroma .kd, 
+		.chroma .kp, 
+		.chroma .kr { color:#859900 }
+		.chroma .kc, 
+		.chroma .kn, 
+		.chroma .kt { color:#859900;font-weight:700 }
+		
+		.chroma .n, 
+		.chroma .na, 
+		.chroma .bp, 
+		.chroma .no, 
+		.chroma .nd, 
+		.chroma .ni, 
+		.chroma .ne, 
+		.chroma .nf, 
+		.chroma .fm, 
+		.chroma .nl, 
+		.chroma .nn, 
+		.chroma .nx, 
+		.chroma .py, 
+		.chroma .nv, 
+		.chroma .vc, 
+		.chroma .vg, 
+		.chroma .vi, 
+		.chroma .vm {color:#268bd2}
+		
+		.chroma .nt{color:#268bd2;font-weight:700}
+		.chroma .nb{color:#cb4b16}
+		.chroma .nc{color:#cb4b16}
+		
+		.chroma .l, 
+		.chroma .ld, 
+		.chroma .s, 
+		.chroma .sa, 
+		.chroma .sb, 
+		.chroma .sc, 
+		.chroma .dl, 
+		.chroma .sd, 
+		.chroma .s2, 
+		.chroma .se, 
+		.chroma .sh, 
+		.chroma .si, 
+		.chroma .sx, 
+		.chroma .sr, 
+		.chroma .s1, 
+		.chroma .ss{color:#2aa198}
+		
+		.chroma .m, 
+		.chroma .mb, 
+		.chroma .mf, 
+		.chroma .mh, 
+		.chroma .mi, 
+		.chroma .il, 
+		.chroma .mo{color:#2aa198;font-weight:700}
+		
+		.chroma .ow{color:#859900}
+		
+		.chroma .c, 
+		.chroma .ch, 
+		.chroma .cm, 
+		.chroma .c1, 
+		.chroma .cs, 
+		.chroma .cp, 
+		.chroma .cpf{color:#93a1a1;font-style:italic}
+		
+		.chroma .g, 
+		.chroma .gd, 
+		.chroma .ge, 
+		.chroma .gr, 
+		.chroma .gh, 
+		.chroma .gi, 
+		.chroma .go, 
+		.chroma .gp, 
+		.chroma .gs, 
+		.chroma .gu, 
+		.chroma .gt{color:#d33682}
