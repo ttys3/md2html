@@ -8,7 +8,7 @@ If you have Go installed, install with:
 
 To run:
 
-    mdtohtml [options] inputfile [outputfile]
+    md2html [options] inputfile [outputfile]
 
 or
 
