@@ -144,8 +144,8 @@ func main() {
 		}
 		if err := tmpl.Execute(out, struct {
 			Title string
-			Style string
-		}{Title: title, Style: css}); err != nil {
+			Style template.HTML
+		}{Title: title, Style: template.HTML(css)}); err != nil {
 			fmt.Fprintln(os.Stderr, "Error execute template:", err)
 		}
 	}
@@ -469,6 +469,7 @@ const header = `
 	</head>
 	<body>
 `
+
 const footer = `
 </body></html>
 `
